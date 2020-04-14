@@ -3,9 +3,24 @@ TO rebuild:
 git clone 
 docker build -t stivehu/deepspam .
 
-
-Chgangelog v0.3:
+Chgangelog v0.7:
 ================
+
+Uj release:   http://thot.banki.hu/deepspam/milter-v0.7/
+
+- ds_model-bol keszult egy queue alapu verzio, ami 1 thread-ben futtatja a keras+tensorflow-t, a deepspam.py mar ezt hasznalja.
+
+- es egy uj, ppymilter-re epulo verzio (deepspam3.py), ami teljesen 1 szalon fut, semmi multithreading, es nem zabalja (annyira) a memoriat :)
+
+Uj model:     http://thot.banki.hu/deepspam/model_v7_6-jo/
+
+- A v7 ota kivettem az LSTM reteget, igazabol nem hozott annyi pluszt, amennyi eroforrast eszik, es neha furcsan is viselkedett. helyette tobb Convolution layer lett.
+- 2020.marcius vegeig beerkezett es ellenorzott spam/ham mintakkal tanitva:
+
+    41006 mail.neg
+    58252 mail.pos
+    99258 total
+
 - html parser atirva, jobban kezeli az extrem eseteket
 - kodlap kezeles javitasok, pl. hibas utf8...
 - tokenizalas modositva, anonimizalja a cimeket (email/url), szamokat
