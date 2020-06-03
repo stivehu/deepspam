@@ -3,6 +3,35 @@ TO rebuild:
 git clone 
 docker build -t stivehu/deepspam .
 
+Chgangelog v0.8.1:
+================
+uj model frissitve a majusi mintakkal (+3000 level):
+
+http://thot.banki.hu/deepspam/model_v8_1/
+
+
+Chgangelog v0.8-teszt:
+================
+
+Tegnap talaltam 2 problemat/hibat:
+
+1. a refactoring soran bekerult v0.6 kornyeken egy 'minlen' parameter a tokenizaloba, es ennek a szurohoz nem jo a default erteke -> emiatt a 4 betunel rovidebb szavakat nem szamolta. altalaban nem okoz gondot, mert azok foleg kotoszavak, nevelok, de nagyon rovid leveleknel, mint  pl az outlook tesztlevele az is szamit. ezt kell atirni 'minlen=1'-re:
+
+eml2token.py:  def tokenize(s,vocab,minlen=4):
+
+2. decemberben megfigyeltem, hogy (majdnem) ugyanarra a tartalmu levelre is eltero eredmenyt adhat a szuro, es csak a megszolitas/nev tert el a levelek tartalmaban. valoszinuleg megtanulta, hogy bizonyos nevek sokkal jellemzobbek a spam levelekre :)  (bizonyos nevu userek sok spamet kapnak, es igy a tanitashoz hasznalt datasetben felulreprezentaltak)
+
+ezert akkor beraktam egy nev listat, az angol es magyar kereszt- es vezeteknevekkel, hogy ezeket ne vegye figyelembe, de mint most kiderult, olyan "nevek" is vannak a listaban, mint 'bank' vagy pl. 'minden', foleg az angolok neveznek el embereket gyakorlatilag barmirol, igy az a lista tele van baromsagokkal, de a magyarban is van pl. 'kis' meg 'nagy' ugye... ezt most egyelore kivettem, majd at kell nezni kezzel a listat es a csak nevkent, mas jelentessel nem birokat meghagyni, de ez rohadt sok melo lesz...
+
+http://thot.banki.hu/deepspam/w2v-models/nevek_freq.txt
+
+ezekkel korrigalva, valamint az aprilisi mintakkal kiegeszitve generaltam egy uj modelt, lehet tesztelni:
+
+http://thot.banki.hu/deepspam/model_v8-teszt/
+
+a 193.224.38.187:1080 milteren mar ez megy, minlen=
+
+
 Chgangelog v0.7:
 ================
 
