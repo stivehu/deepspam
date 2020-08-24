@@ -12,12 +12,13 @@ RUN wget http://thot.banki.hu/deepspam/pymilter-master.zip && unzip pymilter-mas
     cd pymilter-master && python3 setup.py build  && python3 setup.py install && rm -rf pymilter-master
 RUN mkdir -p /usr/local/ds/model 
 COPY ds /usr/local/ds
-RUN wget -nv http://thot.banki.hu/deepspam/model_v8_1/keras4_emb.py -O /usr/local/ds/keras4_emb.py && \
-    wget -nv http://thot.banki.hu/deepspam/model_v8_1/model.config  -O /usr/local/ds/model/model.config && \
-    wget -nv http://thot.banki.hu/deepspam/model_v8_1/model.weights -O /usr/local/ds/model/model.weights && \
-    wget -nv http://thot.banki.hu/deepspam/model_v8_1/model.wordmap-py3 -O /usr/local/ds/model/model.wordmap-py3
+RUN wget -nv http://thot.banki.hu/deepspam/model_v8_2_teszt/keras4_emb.py -O /usr/local/ds/keras4_emb.py && \
+    wget -nv http://thot.banki.hu/deepspam/model_v8_2_teszt/model.config  -O /usr/local/ds/model/model.config && \
+    wget -nv http://thot.banki.hu/deepspam/model_v8_2_teszt/model.weights -O /usr/local/ds/model/model.weights && \
+    wget -nv http://thot.banki.hu/deepspam/model_v8_2_teszt/dataset.txt -O /usr/local/ds/model/dataset.txt && \
+    wget -nv http://thot.banki.hu/deepspam/model_v8_2_teszt/model.wordmap-py3 -O /usr/local/ds/model/model.wordmap-py3
 RUN chmod +x /usr/local/ds/deepspam.py
 EXPOSE 1080
 WORKDIR /usr/local/ds/
-ENTRYPOINT ["/usr/bin/python3","/usr/local/ds/deepspam.py"]
+ENTRYPOINT ["/usr/bin/python3","/usr/local/ds/deepspam3.py"]
 

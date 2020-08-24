@@ -3,6 +3,16 @@ TO rebuild:
 git clone 
 docker build -t stivehu/deepspam .
 
+Chgangelog v0.2-teszt:
+================
+
+Felraktam a v0.8 verziot, a fo valtozas/ujdonsag az attachmentek parsolasa (docx, rtf, pdf, winmail.dat), illetve a model is bovult egy adag ujfajta spam levellel:
+http://thot.banki.hu/deepspam/milter-v0.8/
+http://thot.banki.hu/deepspam/model_v8_2_teszt/
+
+
+https://hup.hu/comment/2515770#comment-2515770
+
 Chgangelog v0.8.1:
 ================
 uj model frissitve a majusi mintakkal (+3000 level):
