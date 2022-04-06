@@ -1,0 +1,41 @@
+milter-v0.2	2018.04.27
+- first public release
+
+milter-v0.3	2019.09.28
+- python2 support
+- better html parser
+- email parser fixes, codepages support
+- more regex replaces (domainname, emailaddress)
+- maildedup2, tester tools added (for dataset creation/validation)
+
+milter-v0.4	2019.09.29
+- refactoring, -> ds_model & eml2token
+
+milter-v0.5	2019.12.25
+- new, internal html2text converter
+- emailaddress regex fixed
+- more charsets in email parser
+- minlen parameter of tokeninzer
+- eml2txt, txt2tok tools added  (for word2vec creation)
+
+milter-v0.6	2020.01.03
+- new tensorflow vs. multithreading fixes (queue version, readonly version)
+- html parser fixes (xml encoding etc)
+- confusables support, new fast unicode conversion (unicodes.map)
+
+milter-v0.7	2020.04.13
+- new asyncio milter implementation -> deepspam3.py  (python3 only)
+- tokenizer minlen changed 4->1  (bugfix)
+
+milter-v0.8	2020.08.22
+- attachment file parsing:  docx, rtf (striprtf, included), pdf (requires pdftotext or pdfminer), ms-tnef (using tnefparse+compressed_rtf)
+- eml2txt speedup (string->bytesio)
+
+milter-v0.9	2021.02.06
+- removed python 2.x and TF 1.x support
+- support TF 2.x model file format
+- deepspam3 milter: better logging format
+- ds_model: handle invalid/NaN result
+- new util: res-test.py validates new model on old model results
+- avoid bayes-poisoning attack: better html parsing (ignores comments, detects hidden text)
+- prefer HTML part over TEXT in emails
